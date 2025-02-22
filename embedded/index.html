@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Embedded</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Georgia, serif;
+        font-size: 48px;
+        line-height: 1.5;
+        background-color: #f5f5f5;
+        color: #f5f5f5;
+      }
+      main {
+        margin-inline: auto;
+        width: min(100%, 1280px);
+        aspect-ratio: 16 / 9;
+        background-color: #e06c41;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main> </main>
+    <script>
+      const main = document.querySelector("main");
+      new ResizeObserver((entries) => {
+        entries.forEach((entry) => {
+          const { width, height } = entry.contentRect;
+          main.textContent = `${Math.round(width)}px × ${Math.round(height)}px`;
+        });
+      }).observe(main);
+    </script>
+    <script src="responsive-iframes-embedded.js"></script>
+  </body>
+</html>

@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const NAME = "responsive-iframe-demo";
+
   const inIframe = window.self !== window.top;
   if (!inIframe) return;
 
@@ -8,8 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function resize() {
     const height = Math.round(document.body.clientHeight);
-    const pathname = window.location.pathname;
-    console.log(pathname);
-    parent.postMessage({ height, pathname }, "*");
+    parent.postMessage({ height, name: NAME }, "*");
   }
 });

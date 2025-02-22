@@ -13,16 +13,17 @@
   <body>
     <main>
       <iframe
-        src="/embedded/index.html"
+        src="./embedded/index.html"
         style="display: block; border: 0; width: 100%"
+        data-name="responsive-iframe-demo"
       ></iframe>
       <script>
         window.addEventListener("message", (message) => {
-          const { height, pathname } = message.data;
-          if (!height || !pathname) return;
+          const { height, name } = message.data;
+          if (!height || !name) return;
           const iframes = document.querySelectorAll("iframe");
           iframes.forEach((iframe) => {
-            if (iframe.getAttribute("src") === pathname) {
+            if (iframe.dataset.name === name) {
               iframe.style.height = height + "px";
             }
           });
